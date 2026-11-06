@@ -1,0 +1,6 @@
+{
+  "name": "persistent-scratch",
+  "description": "The scratch buffers kept across sessions, saved to a file and read back, after persistent-scratch.el",
+  "e8": "0.3.1",
+  "requires": {}
+}
