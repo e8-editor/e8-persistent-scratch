@@ -55,7 +55,7 @@ ertDeftest("persistent-scratch-saving-writes-what-emacs-writes", () => {
     e8.gotoChar(3);
     e8.narrowToRegion(1, 9);
     e8.activateMark();
-    e8.call("persistent-scratch-save");
+    e8.call("persistent-scratch-save" as e8.DefinedCommand);
     shouldEqual(e8.readTextFile(file), EMACS_FILE);
     shouldEqual(e8.messages().at(-1), `Wrote persistent-scratch file ${file}`);
     // Only the user can read it, as Emacs makes it.
@@ -66,7 +66,7 @@ ertDeftest("persistent-scratch-saving-writes-what-emacs-writes", () => {
 ertDeftest("persistent-scratch-restoring-reads-what-emacs-wrote", () => {
   withSaveFile((_dir, file) => {
     writeFile(file, EMACS_FILE);
-    e8.call("persistent-scratch-restore");
+    e8.call("persistent-scratch-restore" as e8.DefinedCommand);
     const state = e8.withCurrentBuffer("*scratch*", () => [e8.point(), e8.mark(), e8.pointMin(), e8.pointMax(), e8.regionActive()]);
     shouldEqual(state, [3, 7, 1, 9, true]);
     shouldEqual(text("*scratch*"), TEXT);
@@ -101,14 +101,14 @@ ertDeftest("persistent-scratch-backups-are-kept-and-filtered", () => {
     e8.setVariable("persistent-scratch-backup-directory", backups);
     e8.setVariable("persistent-scratch-backup-filter", e8.funcall("persistent-scratch-keep-n-newest-backups", 1));
     try {
-      e8.call("persistent-scratch-save");
-      e8.call("persistent-scratch-new-backup");
+      e8.call("persistent-scratch-save" as e8.DefinedCommand);
+      e8.call("persistent-scratch-new-backup" as e8.DefinedCommand);
       // A few milliseconds on, for a backup of another name. (e8.sleepFor
       // reads input in e8 --batch, which has none.)
       const until = Date.now() + 5;
       while (Date.now() < until);
-      e8.call("persistent-scratch-new-backup");
-      e8.call("persistent-scratch-save");
+      e8.call("persistent-scratch-new-backup" as e8.DefinedCommand);
+      e8.call("persistent-scratch-save" as e8.DefinedCommand);
       const names = e8.directoryFiles(backups).filter((f) => f !== "." && f !== "..");
       shouldEqual(names.length, 1, JSON.stringify(names));
     } finally {
@@ -120,7 +120,7 @@ ertDeftest("persistent-scratch-backups-are-kept-and-filtered", () => {
 
 ertDeftest("persistent-scratch-the-mode-is-only-for-scratch-buffers", () => {
   e8.call("switch-to-buffer", "notes");
-  const e = shouldError(() => e8.call("persistent-scratch-mode"));
+  const e = shouldError(() => e8.call("persistent-scratch-mode" as e8.DefinedCommand));
   shouldEqual(e.message, "This buffer isn't managed by `persistent-scratch', not enabling mode.");
   shouldEqual(e8.variable("persistent-scratch-mode"), false);
   e8.call("kill-buffer", "notes");
