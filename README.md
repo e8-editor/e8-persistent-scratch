@@ -11,7 +11,7 @@ e8.usePackage("e8-editor/e8-persistent-scratch");
 e8.funcall("persistent-scratch-setup-default");
 ```
 
-`persistent-scratch-setup-default` restores the scratch buffers and turns on `persistent-scratch-autosave-mode`. E8 installs the package at its newest version tag into `repos/` beside `init.ts`, records the commit in `e8-lock.json`, and requires it. `M-x package-vc-upgrade` brings it up to date. Pin a version with `{ rev: "v0.1.0" }`. It needs E8 0.3.1 or newer.
+`persistent-scratch-setup-default` restores the scratch buffers and turns on `persistent-scratch-autosave-mode`. E8 installs the package at its newest version tag into `repos/` beside `init.ts`, records the commit in `e8-lock.json`, and requires it. `M-x package-vc-upgrade` brings it up to date. Pin a version with `{ rev: "v0.1.1" }`. It needs E8 0.4.0 or newer.
 
 ## Using it
 

@@ -103,10 +103,8 @@ ertDeftest("persistent-scratch-backups-are-kept-and-filtered", () => {
     try {
       e8.call("persistent-scratch-save" as e8.DefinedCommand);
       e8.call("persistent-scratch-new-backup" as e8.DefinedCommand);
-      // A few milliseconds on, for a backup of another name. (e8.sleepFor
-      // reads input in e8 --batch, which has none.)
-      const until = Date.now() + 5;
-      while (Date.now() < until);
+      // A few milliseconds on, for a backup of another name.
+      e8.sleepFor(0.005);
       e8.call("persistent-scratch-new-backup" as e8.DefinedCommand);
       e8.call("persistent-scratch-save" as e8.DefinedCommand);
       const names = e8.directoryFiles(backups).filter((f) => f !== "." && f !== "..");
