@@ -1,6 +1,13 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/e8-editor/e8/main/docs/assets/banner-ports-dark.png">
+  <img alt="E8 package ports" src="https://raw.githubusercontent.com/e8-editor/e8/main/docs/assets/banner-ports-light.png">
+</picture>
+
+Part of the [E8 package ports](https://github.com/e8-editor/e8#packages): Emacs packages ported to [E8](https://github.com/e8-editor/e8) and maintained with it. This is a port of [persistent-scratch](https://github.com/Fanael/persistent-scratch) 0.3.9 by Fanael Linithien. The design and the original code are theirs; the port keeps upstream's licence, the BSD 2-Clause licence.
+
 # e8-persistent-scratch
 
-Keeps `*scratch*` across sessions in [E8](https://github.com/e8-editor/e8): its text, point and mark, major mode and narrowing are saved to a file every few minutes and when E8 quits, and read back when E8 starts, with dated backups if you want them. A port of [persistent-scratch](https://github.com/Fanael/persistent-scratch) 0.3.9.
+Keeps `*scratch*` across sessions in [E8](https://github.com/e8-editor/e8): its text, point and mark, major mode and narrowing are saved to a file every few minutes and when E8 quits, and read back when E8 starts, with dated backups if you want them.
 
 ## Installing
 
@@ -43,7 +50,7 @@ The file is written in the format persistent-scratch.el writes, so E8 and Emacs 
 
 ## Credit
 
-This is a port to E8 of [persistent-scratch](https://github.com/Fanael/persistent-scratch) 0.3.9, by Fanael Linithien, copyright Fanael Linithien, and distributed in MELPA, under the BSD 2-Clause licence; the port keeps that licence. It is not the upstream authors' work as published, and they do not endorse it: report problems with the port here, not upstream.
+persistent-scratch 0.3.9 is copyright Fanael Linithien and distributed in MELPA, under the BSD 2-Clause licence. This port is not the upstream authors' work as published, and they do not endorse it: report problems with the port here, not upstream.
 
 ## Developing
 
