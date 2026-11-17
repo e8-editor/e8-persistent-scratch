@@ -1,0 +1,55 @@
+persistent-scratch NEWS -- history of user-visible changes.
+
+This is the news of e8-persistent-scratch, the E8 port of
+persistent-scratch.  'C-h P' shows it under the package's description.
+
+
+* Changes in persistent-scratch 0.1.1
+
+** It needs E8 0.4.0 or newer, rather than 0.3.1.
+
+
+* Changes in persistent-scratch 0.1.0
+
+This is the first release, a port of persistent-scratch 0.3.9.  It
+needs E8 0.3.1 or newer.
+
+** '*scratch*' is kept across sessions, saved to a file and read back.
+Its text, point and mark, major mode and narrowing are kept.
+'persistent-scratch-setup-default' restores it and turns on
+'persistent-scratch-autosave-mode'.
+
+** 'persistent-scratch-save' saves the scratch buffers to a file.
+'persistent-scratch-restore' reads them back, replacing the text of a
+buffer of the same name.  'persistent-scratch-save-file' says where.
+
+** The scratch buffers can be saved to a file you name and read back.
+With 'persistent-scratch-save-to-file' and
+'persistent-scratch-restore-from-file'.
+
+** 'persistent-scratch-autosave-mode' saves every few minutes.
+It saves when E8 quits too, and turning it on restores the scratch
+buffers first, once a session.
+'persistent-scratch-autosave-interval' is the seconds between saves,
+or ["idle", N] to save after N idle seconds.
+
+** 'persistent-scratch-mode' makes 'C-x C-s' save the scratch buffers.
+'C-x C-w' does too, rather than asking for a file.
+
+** 'persistent-scratch-what-to-save' chooses what is kept.
+Besides each buffer's name and text: "major-mode", "point" with the
+mark, and "narrowing".
+
+** A function says which buffers are scratch buffers.
+It is 'persistent-scratch-scratch-buffer-p-function'; by default only
+'*scratch*' is.
+
+** Dated backups of each save can be kept.
+Set 'persistent-scratch-backup-directory'.
+'persistent-scratch-backup-filter' says which to delete, as
+'persistent-scratch-keep-n-newest-backups' and
+'persistent-scratch-keep-backups-not-older-than' make, and
+'persistent-scratch-new-backup' starts a new one at the next save.
+
+** The save file is in persistent-scratch.el's format.
+E8 and Emacs can read each other's, so one file can be shared.
